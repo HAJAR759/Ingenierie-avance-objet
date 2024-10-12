@@ -2,7 +2,7 @@ package exercice2;
 
 import java.util.ArrayList;
 
-abstract class Compte {
+public abstract class Compte {
 	protected ArrayList<Operation> operations;
 	protected String id;
 	protected String dateCreation;
