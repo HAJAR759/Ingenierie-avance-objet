@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class SauvegarderFacture {
 	private HashMap<Produit, Integer> produits;
@@ -14,7 +15,7 @@ public class SauvegarderFacture {
             FileWriter writer = new FileWriter(file);
             writer.write(facture.getId());
             // write the string to the file
-            for (Map.Entry mapentry : this.produits.entrySet()) {
+            for (Entry<Produit, Integer> mapentry : facture.getProduits().entrySet()) {
                 writer.write(mapentry.getKey().toString() + "\t" + mapentry.getValue().toString() );
             }
             writer.write("Prix = " + facture.getTotal());

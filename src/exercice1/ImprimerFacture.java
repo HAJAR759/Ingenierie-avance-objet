@@ -1,9 +1,10 @@
 package exercice1;
 
+import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class ImprimerFacture {
-	
+	private HashMap<Produit, Integer> produits;
 	public void imprimer(Facture facture) {
         double prix;
         for (Entry<Produit, Integer> mapentry : facture.getProduits().entrySet()) {

@@ -1,7 +1,5 @@
 package exercice1;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,16 +41,14 @@ public class Facture {
     }
     public double getTotal(){
         double total = 0;
-        for (Map.Entry mapentry : this.produits.entrySet()) {
-            total+= ((Produit)mapentry.getKey()).getPrix() * ((Double)mapentry.getValue());
+        for (Map.Entry<Produit, Integer> entry : this.produits.entrySet()) {
+        	total += entry.getKey().getPrix() * entry.getValue();
         }
         return total;
     }
     public double getTotalTTC(){
         return this.getTotal()*(1+this.TVA);
     }
-    public void imprimer(ImprimerFacture printer) {
-        printer.imprimer(this);
-    }
+   
     
 }
