@@ -1,26 +1,13 @@
 package exercice4;
 
-public class Etudiant {
-    private String nom;
-    private String prenom;
-    private Integer numero;
-
-    public Etudiant(String nom, String prenom, Integer numero) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.numero = numero;
+class Etudiant extends Utilisateur {
+    public Etudiant(String prenom, String nom) {
+        super(prenom, nom);
     }
 
-    public String getNom() {
-        return nom;
+    @Override
+    public String genererLogin() {
+        return getPrenom().charAt(0) + getNom() + "usms.ac.ma";
     }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public Integer getNumero() {
-        return numero;
-    }
-}
+ }
 

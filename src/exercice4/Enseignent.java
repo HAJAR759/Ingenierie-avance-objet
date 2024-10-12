@@ -1,27 +1,20 @@
 package exercice4;
 
-public class Enseignent {
-    private String nom;
-    private String prenom;
-    private String Grade;
+class Enseignent extends Utilisateur {
+    private String grade;
 
-    public Enseignent(String nom, String prenom, String grade) {
-        this.nom = nom;
-        this.prenom = prenom;
-        Grade = grade;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
+    public Enseignent(String prenom, String nom, String grade) {
+        super(prenom, nom);
+        this.grade = grade;
     }
 
     public String getGrade() {
-        return Grade;
+        return grade;
     }
 
-
+    @Override
+    public String genererLogin() {
+        return getPrenom() + getNom() + getGrade() + "usms.ma";
+    }
 }
+

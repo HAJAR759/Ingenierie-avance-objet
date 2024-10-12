@@ -2,6 +2,7 @@ package exercice2;
 
 
 public class Operation {
+
     private double montant;
     private TypeOperation typeOperation;
 
