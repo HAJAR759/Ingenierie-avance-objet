@@ -19,7 +19,23 @@ public class Facture {
         return TVA;
     }
 
-    public static void setTVA(double TVA) {
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public HashMap<Produit, Integer> getProduits() {
+		return produits;
+	}
+
+	public void setProduits(HashMap<Produit, Integer> produits) {
+		this.produits = produits;
+	}
+
+	public static void setTVA(double TVA) {
         Facture.TVA = TVA;
     }
     public void addProduit(Produit produit, int quantité){
@@ -35,36 +51,8 @@ public class Facture {
     public double getTotalTTC(){
         return this.getTotal()*(1+this.TVA);
     }
-    public void imprimer(){
-        double prix;
-        for (Map.Entry mapentry : this.produits.entrySet()) {
-            prix = ((Produit)mapentry.getKey()).getPrix() * ((Double)mapentry.getValue());
-            System.out.println(mapentry.getKey() + "\t" + mapentry.getValue() + " : " +
-                    prix );
-        }
-        System.out.println("Prix = " + this.getTotal());
-        System.out.println("PrixTTC = " + this.getTotalTTC());
+    public void imprimer(ImprimerFacture printer) {
+        printer.imprimer(this);
     }
-    public void saveFacture() {
-        try {
-            // create a FileWriter object with the file name
-            String file = "Facture".concat(String.valueOf(this.id));
-            FileWriter writer = new FileWriter(file);
-            writer.write(this.id);
-            // write the string to the file
-            for (Map.Entry mapentry : this.produits.entrySet()) {
-                writer.write(mapentry.getKey().toString() + "\t" + mapentry.getValue().toString() );
-            }
-            writer.write("Prix = " + this.getTotal());
-            writer.write("PrixTTC = " + this.getTotalTTC());
-            // close the writer
-            writer.close();
-
-            System.out.println("Successfully wrote text to file.");
-
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-    }
+    
 }
