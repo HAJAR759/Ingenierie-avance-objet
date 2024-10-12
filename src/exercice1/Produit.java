@@ -1,6 +1,7 @@
 package exercice1;
 
 public class Produit {
+	
     private String libele;
     private double prix;
 
