@@ -15,6 +15,7 @@ public abstract class Compte {
         this.montant = 0;
     }
     public abstract boolean addOperation(Operation operation);
+    
 	public ArrayList<Operation> getOperations() {
 		return operations;
 	}
