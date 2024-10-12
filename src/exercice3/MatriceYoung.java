@@ -22,41 +22,48 @@ conditions valables aprs chaque opération.
         6  7  8
 
   */
-public class MatriceYoung  extends ArrayList<Object> {
-    private static final int INF = Integer.MAX_VALUE;
-    private int n;
-    private int m;
-    public MatriceYoung(int n , int m ) {
-        super(n);
-        this.n=n;
+
+import java.util.ArrayList;
+
+public class MatriceYoung {
+    protected static final int INF = Integer.MAX_VALUE;
+    protected int n; // nombre de lignes
+    protected int m; // nombre de colonnes
+    protected ArrayList<ArrayList<Integer>> tableau;
+
+    public MatriceYoung(int n, int m) {
+        this.n = n;
         this.m = m;
-        for (int i = 0; i < n; n++){
-            this.add(new ArrayList<Integer>(m));
-            for (int j = 0; j < m; j++){
-                this.setElement(i,j,INF);
+        tableau = new ArrayList<>();
+
+        // Initialiser le tableau avec INF
+        for (int i = 0; i < n; i++) {
+            ArrayList<Integer> row = new ArrayList<>(m);
+            for (int j = 0; j < m; j++) {
+                row.add(INF); // Initialiser chaque élément à INF
             }
+            tableau.add(row); // Ajouter la ligne au tableau
         }
     }
-    
-   
-    public void printTabbleau(){
-        for(int i = 0; i < n; i++){
-            for(int j= 0; j< m; j++){
 
-                if(this.getElement(i,j)==INF){
-                    System.out.print("INF" + ";");
-                }
-                else{
-                    System.out.print(this.getElement(i,j) + ";");
+    public void printTableau() {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (getElement(i, j) == INF) {
+                    System.out.print("INF\t");
+                } else {
+                    System.out.print(getElement(i, j) + "\t");
                 }
             }
             System.out.println();
         }
     }
-    public int getElement(int i,int j){
-        return ((ArrayList<Integer>) this.get(i)).get(j);
+
+    protected int getElement(int i, int j) {
+        return tableau.get(i).get(j);
     }
-    public void setElement(int i, int j , int valeur){
-        ((ArrayList<Integer>) this.get(i)).set(j,valeur);
+
+    protected void setElement(int i, int j, int valeur) {
+        tableau.get(i).set(j, valeur);
     }
 }

@@ -1,63 +1,90 @@
 package exercice3;
 
-public class OperationMatriceYoung {
-	 private MatriceYoung matrice;
-	    private int n;
-	    private int m;
 
-	    public OperationMatriceYoung(MatriceYoung matrice, int n, int m) {
-	        this.matrice = matrice;
-	        this.n = n;
-	        this.m = m;
-	    }
+public class OperationMatriceYoung extends MatriceYoung {
 
-	    public void insertElement(int key) {
-	        if (matrice.getElement(n - 1, m - 1) != Integer.MAX_VALUE) {
-	            System.out.println("Le tableau de Young est plein.");
-	            return;
-	        }
-	        matrice.setElement(n - 1, m - 1, key);
+    public OperationMatriceYoung(int n, int m) {
+        super(n, m);
+    }
 
-	        int i = n - 1;
-	        int j = m - 1;
-	        while (i > 0 || j > 0) {
-	            int top = (i > 0) ? matrice.getElement(i - 1, j) : Integer.MAX_VALUE;
-	            int left = (j > 0) ? matrice.getElement(i, j - 1) : Integer.MAX_VALUE;
+    public int extraireMin() {
+        if (getElement(0, 0) == INF) {
+            System.out.println("Le tableau est vide.");
+            return INF; // Aucun élément à extraire
+        }
 
-	            if (key >= top && key >= left) {
-	                break; // Clé bien placée
-	            } else if (top < left) {
-	            	matrice.setElement(i, j, top);
-	                i--;
-	            } else {
-	            	matrice.setElement(i, j, left);
-	                j--;
-	            }
-	        }
-	        matrice.setElement(i, j, key);
-	    }
+        // Extraire le minimum
+        int min = getElement(0, 0);
+        setElement(0, 0, INF); // Remplacer le minimum par INF
 
-	    public int extractMin() {
-	        int min = matrice.getElement(0, 0);
-	        matrice.setElement(0, 0, Integer.MAX_VALUE);
-	        equilibrerTableau(0, 0);
-	        return min;
-	    }
+        // Rééquilibrer le tableau après extraction
+        equilibrerTableau(0, 0);
 
-	    private void equilibrerTableau(int i, int j) {
-	        int down = (i + 1 < n) ? matrice.getElement(i + 1, j) : Integer.MAX_VALUE;
-	        int right = (j + 1 < m) ? matrice.getElement(i, j + 1) : Integer.MAX_VALUE;
+        return min; // Retourner la valeur du minimum extrait
+    }
 
-	        if (down == Integer.MAX_VALUE && right == Integer.MAX_VALUE) {
-	            return;
-	        }
 
-	        if (down < right) {
-	        	matrice.setElement(i, j, down);
-	            equilibrerTableau(i + 1, j);
-	        } else {
-	        	matrice.setElement(i, j, right);
-	            equilibrerTableau(i, j + 1);
-	        }
-	    }
+    private void equilibrerTableau(int i, int j) {
+        int down = (i + 1 < n) ? getElement(i + 1, j) : INF;
+        int right = (j + 1 < m) ? getElement(i, j + 1) : INF;
+
+        if (down == INF && right == INF) {
+            return; // Fin de la descente
+        }
+
+        if (down < right) {
+            setElement(i, j, down);
+            setElement(i + 1, j, INF); // Remplacer la position descendue par INF
+            equilibrerTableau(i + 1, j);
+        } else {
+            setElement(i, j, right);
+            setElement(i, j + 1, INF); // Remplacer la position déplacée par INF
+            equilibrerTableau(i, j + 1);
+        }
+    }
+
+    public boolean add(int key) {
+        // Chercher la première case disponible pour l'insertion
+        int i = n - 1, j = m - 1;
+
+        while (i >= 0 && j >= 0) {
+            if (getElement(i, j) == INF) {
+                setElement(i, j, key); // Insérer la clé
+                remonter(i, j); // Maintenir la propriété du tableau de Young
+                return true;
+            } else if (i > 0 && getElement(i - 1, j) <= key) {
+                j--; // Aller à gauche
+            } else {
+                i--; // Aller vers le haut
+            }
+        }
+
+        System.out.println("Le tableau de Young est plein.");
+        return false;
+    }
+
+    private void remonter(int i, int j) {
+        int key = getElement(i, j);
+        while (i > 0 || j > 0) {
+            int up = (i > 0) ? getElement(i - 1, j) : INF;
+            int left = (j > 0) ? getElement(i, j - 1) : INF;
+
+            if (key < up && key < left) {
+                break; // La clé est à la bonne place
+            } else if (up < left) {
+                setElement(i, j, up);
+                i--;
+            } else {
+                setElement(i, j, left);
+                j--;
+            }
+        }
+        setElement(i, j, key); // Placer la clé à la bonne position
+    }
+
+    // Méthode d'affichage du tableau
+    public void printTableau() {
+        super.printTableau();
+        System.out.println(); // Ligne vide pour l'espacement
+    }
 }
