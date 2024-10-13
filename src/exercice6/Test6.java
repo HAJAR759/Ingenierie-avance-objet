@@ -2,8 +2,6 @@ package exercice6;
 
 public class Test6 {
 	
-	   
-
 	    	public static void main(String[] args) {
 	            ValidationAge validationRegion1 = new ValidationAge(new ValidationAgeRegion1());
 	            ValidationAge validationRegion2 = new ValidationAge(new RegleValidationRegion2());
