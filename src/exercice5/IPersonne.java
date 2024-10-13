@@ -1,5 +1,6 @@
 package exercice5;
 
+
 import java.util.Date;
 
 public interface IPersonne {
