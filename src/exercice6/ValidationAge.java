@@ -1,7 +1,6 @@
 package exercice6;
 
 public class ValidationAge {
-
     public boolean peutBoireAlcool(int age, String region) {
         if (region.equals("Region1")) {
             return age >= 18;
@@ -12,7 +11,6 @@ public class ValidationAge {
         }
         return false;
     }
-
     public boolean peutUtiliserFesseBouk(int age, String region) {
         if (region.equals("Region1")) {
             return age >= 13;
@@ -23,7 +21,6 @@ public class ValidationAge {
         }
         return false;
     }
-
     public boolean peutEtreEluMaire(int age, String region) {
         if (region.equals("Region1")) {
             return age >= 21;
