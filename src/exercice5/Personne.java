@@ -1,9 +1,12 @@
 package exercice5;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+
 public class Personne implements IPersonne{
+	
 	private String nom;
 	private String prenom;
 	private Date dateNaiss;
@@ -40,6 +43,16 @@ public class Personne implements IPersonne{
 	public int calculerAge() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	@Override
+	public void setDateNaiss(LocalDate d) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String envoyerMessage(String message, List LesDestinataires) {
+		// TODO Auto-generated method stub
+		return null;
 	}
     
 }
