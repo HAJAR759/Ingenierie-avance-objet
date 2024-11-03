@@ -1,6 +1,7 @@
 package exercice5;
 
 class Report extends Document {
+	
 	public Report(String title, String author, String content) {
 		super(title, author, content);
 	}

@@ -1,6 +1,4 @@
-package databasecnx;
-
-
+package exercice1;
 
 public class Main {
 
