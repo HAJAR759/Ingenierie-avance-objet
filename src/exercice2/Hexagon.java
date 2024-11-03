@@ -1,4 +1,4 @@
-package ex2;
+package exercice2;
 
 public class Hexagon implements Forme{
 

@@ -1,4 +1,4 @@
-package adapter_pattern;
+package exercice3;
 
 public class InternalData {
 	
