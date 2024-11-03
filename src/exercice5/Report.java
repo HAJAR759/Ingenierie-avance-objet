@@ -13,4 +13,8 @@ class Report extends Document {
 		System.out.println("Author: " + author);
 		System.out.println("Content: " + content);
 	}
+	 @Override
+	    public Document clone() {
+	        return new Report(getTitle(), getAuthor(), getContent());
+	    }
 }

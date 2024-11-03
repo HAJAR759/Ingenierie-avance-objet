@@ -12,5 +12,8 @@ class Invoice extends Document {
         System.out.println("Author: " + author);
         System.out.println("Content: " + content);
     }
-
+    @Override
+    public Document clone() {
+        return new Invoice(getTitle(), getAuthor(), getContent());
+    }
 }

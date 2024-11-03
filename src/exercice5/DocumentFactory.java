@@ -1,7 +1,7 @@
 package exercice5;
 
 class DocumentFactory {
-    public Document createDocument(String type, String title, String author, String content) {
+    public static Document createDocument(String type, String title, String author, String content) {
         switch (type.toLowerCase()) {
             case "report":
                 return new Report(title, author, content);
