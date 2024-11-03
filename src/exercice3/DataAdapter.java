@@ -21,7 +21,7 @@ public class DataAdapter {
         return externalData;
     }
     
- // Méthode pour convertir en JSON 
+   // Méthode pour convertir en JSON 
     public String convertToJson() {
         return "{ \"name\": \"" + internalData.getFullName() + "\", \"age\": " + internalData.getYearsOld() + " }";
     }

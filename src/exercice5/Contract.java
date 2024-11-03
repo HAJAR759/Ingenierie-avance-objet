@@ -12,4 +12,9 @@ class Contract extends Document {
         System.out.println("Author: " + author);
         System.out.println("Content: " + content);
     }
+    
+    @Override
+    public Document clone() {
+        return new Contract(getTitle(), getAuthor(), getContent());
+    }
 }
