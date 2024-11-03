@@ -3,14 +3,10 @@ package adapter_pattern;
 public class Main {
 	
     public static void main(String[] args) {
-        // Création de l'instance de données internes
-        InternalData internalData = new InternalData("Jean Dupont", 30);
+    	 InternalData internalData = new InternalData("Mouna", 20);
+         DataAdapter adapter = new DataAdapter(internalData);
 
-        // Utilisation de l'adaptateur pour convertir les données
-        DataAdapter adapter = new DataAdapter(internalData);
-
-        // Conversion et envoi des données vers l'API externe
-        ExternalAPI externalAPI = new ExternalAPI();
-        externalAPI.sendData(adapter.convertToExternalFormat());
-    }
+         // Envoi des données converties vers l'API simulée
+         adapter.sendToExternalAPI();
+     }
 }
