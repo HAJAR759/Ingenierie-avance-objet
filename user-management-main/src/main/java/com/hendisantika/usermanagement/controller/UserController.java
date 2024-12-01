@@ -31,7 +31,6 @@ import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 
-
 @Controller
 @Slf4j
 @RequiredArgsConstructor
@@ -154,7 +153,7 @@ public class UserController {
 
         return "user-form/user-view";
     }
-
+ // post method
     @PostMapping("/editUser")
     public String postEditUserForm(@Valid @ModelAttribute("userForm") User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
