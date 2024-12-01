@@ -3,8 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - main
-
+      - tpSonarQube
 jobs:
   build:
     name: Build, Analyze, and Deploy
