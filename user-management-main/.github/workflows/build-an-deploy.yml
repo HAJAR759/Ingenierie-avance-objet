@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     name: Build, Analyze, and Deploy
-    runs-on: self-hosted
+    runs-on: HAJARELM
 
     steps:
 
