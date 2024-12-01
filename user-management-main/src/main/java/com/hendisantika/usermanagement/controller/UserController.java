@@ -31,10 +31,7 @@ import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
 
-/**
- * Created by IntelliJ IDEA.
- * Project : user-management
- */
+
 @Controller
 @Slf4j
 @RequiredArgsConstructor
